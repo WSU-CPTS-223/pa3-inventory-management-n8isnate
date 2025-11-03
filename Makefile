@@ -1,10 +1,15 @@
-out: clean compile execute
+out: clean compile
 
-compile: main.cpp
-	g++ -g -Wall -std=c++14 main.cpp -o mainexe
+GCC=g++
+GCCFLAGS=-Wall -Werror -std=c++11 -g
+EXEC=mainexe
+OBJECTS=main.cpp HashMap.cpp
 
-execute: mainexe
-	./mainexe
+compile:
+	$(GCC) -o $(EXEC) $(OBJECTS) $(GCCFLAGS)
+
+execute:
+	./$(EXEC)
 
 clean:
-	rm -f mainexe
+	rm -f $(EXEC)
